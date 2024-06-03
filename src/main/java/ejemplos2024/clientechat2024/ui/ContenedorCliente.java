@@ -34,6 +34,7 @@ public class ContenedorCliente extends BorderPane {
         paneMensajes.setText("Mensajes recibidos");
         paneMensaje = new TitledPane();
         paneMensaje.setText("Mensaje a enviar");
+
         etiServidor = new Label("Servidor:");
         txtServidor = new TextField("127.0.0.1");
         etiPuerto = new Label("Puerto:");
@@ -50,5 +51,25 @@ public class ContenedorCliente extends BorderPane {
                   etiUsuario, txtUsuario, etiPassword, txtPassword, btnConectar);
         paneConexion.setContent(contPaneConexion);
         setTop(paneConexion);
+
+        txtMensajes = new TextArea();
+        txtMensajes.setEditable(false);
+        txtMensajes.setMinWidth(950);
+        txtMensajes.setMinHeight(330);
+        paneMensajes.setContent(new ScrollPane(txtMensajes));
+        paneMensajes.setMinHeight(360);
+
+        txtMensaje = new TextField();
+        txtMensaje.setPromptText("Escriba su mensaje a enviar...");
+        txtMensaje.setMinWidth(900);
+        btnEnviarMensaje = new Button("Enviar");
+
+        setCenter(paneMensajes);
+
+        HBox contPaneMensaje = new HBox();
+        contPaneMensaje.getChildren().addAll(txtMensaje, btnEnviarMensaje);
+        paneMensaje.setContent(contPaneMensaje);
+
+        setBottom(paneMensaje);
     }
 }
